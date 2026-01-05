@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To A.S.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: beige;
+            transition: background 0.8s ease;
+        }
+
+        body.darkened {
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        .mailbox-container, .envelope-container {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .mailbox-container:hover {
+            transform: scale(1.05);
+        }
+
+        .mailbox-container img {
+            width: 300px;
+            height: auto;
+            display: block;
+        }
+
+        .envelope-container {
+            display: none;
+        }
+
+        .envelope-container img {
+            width: 250px;
+            height: auto;
+            display: block;
+        }
+
+        .envelope-container:hover {
+            transform: scale(1.05);
+        }
+
+        .letter-container {
+            display: none;
+            width: 90%;
+            max-width: 600px;
+            height: 80vh;
+            max-height: 700px;
+            background: #f4e8d0;
+            padding: 60px 50px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow-y: auto;
+            background-image: 
+                repeating-linear-gradient(
+                    transparent,
+                    transparent 31px,
+                    rgba(139, 69, 19, 0.1) 31px,
+                    rgba(139, 69, 19, 0.1) 32px
+                );
+        }
+
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .letter-content {
+            position: relative;
+            z-index: 1;
+            line-height: 32px;
+            color: #2c1810;
+            font-size: 18px;
+        }
+
+        .letter-content h1 {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #8b4513;
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            text-indent: 30px;
+        }
+
+        .letter-content .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .show {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mailbox-container" id="mailbox">
+        <img src="closed.png" id="mailboxImg" alt="Mailbox">
+    </div>
+
+    <div class="envelope-container" id="envelope">
+        <img src="envelope.png" alt="Envelope">
+    </div>
+
+    <div class="letter-container" id="letter">
+        <div class="letter-content">
+           <h1>Kochana Amelio,</h1>
+           <p>tak często powtarzam Ci, jak piękne jest Twoje ciało. Zawsze, gdy Cię widzę, czy na żywo, czy na kamerce, czy oglądając nasze zdjęcia, rozmyślam o Tobie i o tym, jak bardzo mi się podobasz. Kiedy mówię, że jesteś najcudowniejszą dziewczyną na Ziemi, naprawdę mam to na myśli, bo odkąd Cię znam, słowo „Piękno” to jedynie synonim na Ciebie.</p>
+            <p>Ale jesteś więcej niż tylko ciałem, a ja za rzadko przypominam Ci, jak cudowne jest to, co masz w środku. Jest w Tobie coś, co przyciąga mnie jeszcze bardziej niż Twój uśmiech. Coś, czego jeszcze nie poznałem w pełni, ale po cichu stało się powodem, dla którego kocham Cię głębiej niż wszystko, co w życiu napotkałem.</p>
+            <p>Masz dar delikatności do rzeczy, które nigdy o nią nie prosiły, ale jej potrzebowały. Jak zajmujesz się swoimi roślinami, nawet wtedy, kiedy sytuacja wydaje się być beznadziejna, nawet kiedy łatwiej byłoby kupić nowe niż ratować własne. Widzę to i znaczy to dużo więcej, niż sobie zdajesz sprawę. Kocham Twoją ekscytację, gdy coś nareszcie kwitnie lub wypuszcza nowe pędy. Dostrzegam tę samą łagodność, kiedy jesteś z dziećmi. Podziwiam to, jak potrafisz się nimi zająć, nawet wtedy, kiedy nikt tego od Ciebie nie wymaga i nic Cię z nimi nie łączy.</p>
+            <p>Kocham blask w oczach, z jakim opowiadasz o rzeczach ktore cie interesuja. Jak chetnie chwalisz sie tym, czego sie uczysz, co potrafisz, co ogladasz i jak wprowadzasz mnie w swiat rzeczy, o ktorych bez ciebie nie mialbym pojecia. </p>
+            <p>Jest w Tobie łagodność, która wydaje się zamierzona, i upór, który również ma swoje zasłużone miejsce. Płyniesz przez życie, jakbyś nikogo nie potrzebowała, ale sposób, w jaki się troszczysz, pokazuje, jak głębokie są Twoje uczucia. Dla mnie ten kontrast jest jedną z Twoich najbogatszych cech.</p>
+            <p>Podczas jednego z naszych pierwszych spotkań zauważyłaś, że gdy siedzimy razem, wtuleni w siebie, czasem drżę, nie kontrolując tego. Zrozumiałem, co to. Gdy czuję Twój dotyk, moje ciało relaksuje się w sposób, w jaki wcześniej nie miało okazji. Mój umysł wysyła sygnał nie dlatego, że coś jest nie tak, lecz dlatego, że nie jest przyzwyczajony do takiego spokoju. Komfort, jaki daje mi Twoja obecność, jest prawdziwy. Kiedy czuję, że jesteś przy mnie, odpoczywam nie tylko myślami, ale całym ciałem.</p>
+            <p>Najbardziej przyciąga mnie do Ciebie jednak nie to, co już o Tobie wiem, ale poczucie, że jest jeszcze tyle Ciebie, które istnieje po cichu, bez potrzeby tłumaczenia i naprawiania czegokolwiek. Nie sekrety, tylko to, co głębokie. Nie czuję ciekawości, która prosi, żebyś otworzyła się szybciej lub nazwała coś, zanim będziesz na to gotowa. To ciekawość, która wynika z chęci zostania na tyle długo, by zaufanie mogło samo zadziałać.</p>
+            <p>Nie czekam, by kochać Cię „w pełni” pewnego dnia, kiedy będę rozumiał już wszystko. Kocham Cię dokładnie taką, jaka jesteś teraz. Wiem jednak, że moja miłość do Ciebie to coś, co będzie wciąż jedynie wzrastać. Nie dlatego, że coś zmienisz, tylko dlatego, że zaufanie będzie miało przestrzeń, żeby się budować.</p>
+            <p>Wszystko, czego nie jesteś pewna, co jest dla Ciebie ciężkie, co jest trudne do pokazania, mnie nie odstrasza. Jeśli już, sprawia, że chcę być łagodniejszy, bardziej cierpliwy i zawsze obecny. Nie musisz zasłużyć na moją miłość ani mnie przed nią chronić. Nie potrzebuję też, żebyś była kimkolwiek innym, niż już jesteś.</p>
+            <p>Wszystko inne może poczekać. Nie potrzebuję, by bliskość wyglądała w taki czy inny sposób. Tak długo, jak będziesz czuć się bezpiecznie przy mnie, a mury runą, gdy będą gotowe, jestem dokładnie tam, gdzie chcę być.</p>
+            <p>Przy Tobie.</p>
+            <p class="signature">Na zawsze Twój, <br>Maciej</p>
+        </div>
+    </div>
+
+    <script>
+        const mailbox = document.getElementById('mailbox');
+        const mailboxImg = document.getElementById('mailboxImg');
+        const envelope = document.getElementById('envelope');
+        const letter = document.getElementById('letter');
+        const body = document.body;
+
+        // Hover effect for mailbox
+        mailbox.addEventListener('mouseenter', () => {
+            mailboxImg.src = 'open.png';
+        });
+
+        mailbox.addEventListener('mouseleave', () => {
+            mailboxImg.src = 'closed.png';
+        });
+
+        // Click mailbox to show envelope
+        mailbox.addEventListener('click', () => {
+            mailbox.classList.add('hidden');
+            envelope.classList.add('show');
+        });
+
+        // Click envelope to show letter
+        envelope.addEventListener('click', () => {
+            envelope.classList.add('hidden');
+            body.classList.add('darkened');
+            letter.classList.add('show');
+        });
+    </script>
+</body>
+</html>
